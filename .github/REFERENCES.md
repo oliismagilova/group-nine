@@ -1,8 +1,3 @@
----
-author: Eric Quelch
-email: quelchx@gmail.com
----
-
 # Git Cheatsheet
 
 Table of contents
