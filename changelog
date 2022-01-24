@@ -1,4 +1,12 @@
 1/23/2022
+
 - Project repository created
 - Git commands added inside the review directory
+- Added styling and writing reference guide inside review directory
 - Client folder with tailwindcss config and next configuration is ready for development
+
+- Created temp directory to hold mock designs for various parts of the application
+- Created components directory + navigation bar
+- Created routes file to export various navigation routes
+- Created Navbar.jsx file and added various routes + navigation to app.js file
+- Created blank pages for navigation routes to load something.
