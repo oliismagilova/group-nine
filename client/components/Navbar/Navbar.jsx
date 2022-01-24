@@ -12,7 +12,7 @@ export default function Navbar() {
             className="flex items-center mb-5 font-medium text-gray-900 lg:w-auto lg:items-center lg:justify-center md:mb-0"
           >
             <span className="mx-auto text-xl font-black leading-none text-gray-900 select-none">
-              <span className="text-green-600">T</span>-Shirts
+              T<span className="text-green-600">-Shirts</span>
             </span>
           </a>
           <nav className="flex flex-wrap items-center mb-5 text-base md:mb-0 md:pl-8 md:ml-8 md:border-l md:border-gray-200">
