@@ -45,12 +45,15 @@ export default function Header() {
               </div>
             </div>
           </div>
+
           <div className="w-full md:w-1/2">
             <div className="w-full h-auto overflow-hidden rounded-md shadow-xl sm:rounded-xl">
               {/* temporary image */}
               <img src="https://cdn.devdojo.com/images/november2020/hero-image.jpeg" />
             </div>
           </div>
+
+          
         </div>
       </div>
     </section>

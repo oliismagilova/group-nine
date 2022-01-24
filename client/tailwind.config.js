@@ -1,16 +1,18 @@
-const colors = require("tailwindcss/colors");
+const colors = require('tailwindcss/colors')
 
 module.exports = {
-  mode: "jit",
-  purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
+  mode: 'jit',
+  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      // example
+      gridTemplateRows: {
+        '[auto,auto,1fr]': 'auto auto 1fr',
+      },
       fontFamily: {
-        ubuntu: ["Ubuntu", "sans-serif"],
-        poppin: ["Poppins", "sans-serif"],
-        monaco: ["Monaco", "sans-serif"],
+        ubuntu: ['Ubuntu', 'sans-serif'],
+        poppin: ['Poppins', 'sans-serif'],
+        monaco: ['Monaco', 'sans-serif'],
       },
       // example
       colors: {
@@ -28,4 +30,4 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-};
+}
