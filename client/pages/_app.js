@@ -1,7 +1,7 @@
-import Head from "next/head";
-import Navbar from "@/components/Navbar/Navbar";
+import Head from 'next/head'
+import Navbar from '@/components/Navbar/Navbar'
 
-import "@/style/main.css";
+import '@/style/main.css'
 
 function Application({ Component, pageProps }) {
   return (
@@ -38,7 +38,7 @@ function Application({ Component, pageProps }) {
       <Navbar />
       <Component {...pageProps} />
     </section>
-  );
+  )
 }
 
-export default Application;
+export default Application

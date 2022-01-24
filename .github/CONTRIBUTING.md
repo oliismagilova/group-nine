@@ -12,7 +12,7 @@ export default function AboutPage() {
     <div>
       <h1>About</h1>
     </div>
-  );
+  )
 }
 ```
 
@@ -24,10 +24,10 @@ const AboutPage = () => {
     <div>
       <h1>About</h1>
     </div>
-  );
-};
+  )
+}
 
-export default AboutPage;
+export default AboutPage
 ```
 
 Any props being passed through components should be written like so:
@@ -47,3 +47,17 @@ export default function SomeLink(props) {
   )
 }
 ```
+
+Please import component links like this:
+
+```jsx
+import ComponentName from '@/components/ComponentName'
+```
+
+Not like this:
+
+```jsx
+import ComponentName from '../components/ComponentName'
+```
+
+This is because the client/next.config.js file is configured to accept @ signs to import directories to avoid `../../` path linking.
