@@ -1,3 +1,8 @@
+---
+author: Eric Quelch
+email: quelchx@gmail.com
+---
+
 # Application Project
 
 **Table of Contents**

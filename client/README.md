@@ -1,4 +1,9 @@
-# Next + Tailwind Template 
+---
+author: Eric Quelch
+email: quelchx@gmail.com
+---
+
+# Next + Tailwind Template
 
 This is a Next.js + Tailwind CSS Example setup with some small examples to get started. To duplicate this repository to use for your own project, run the following command inside your terminal:
 

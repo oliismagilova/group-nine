@@ -1,3 +1,8 @@
+---
+author: Eric Quelch
+email: quelchx@gmail.com
+---
+
 # Git Cheatsheet
 
 Table of contents
@@ -90,3 +95,7 @@ objects. Creates named branch in the remote repo if it doesn’t exist.
 - If I want to commit the changes I have made or added files to the current repo I will run `git commit -m 'message'`
 
 - If I want to push the changes made to the current branch (usually main) - `git push -u origin master` or simply `git push`
+
+## Tips
+
+Make sure to do frequent adds and commits to avoid adding to many changes making reverting back more tedious if application breaks. This is also easier to track changes made within the application.
