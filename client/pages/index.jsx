@@ -29,7 +29,7 @@ export default function Home() {
               </svg>
               See what other people are saying
             </h2>
-            <div className="block w-full h-0.5 max-w-lg mt-6 bg-purple-100 rounded-full"></div>
+            <div className="block w-full h-0.5 max-w-lg mt-6 bg-green-200 rounded-full"></div>
 
             <div className="items-center justify-center w-full mt-12 mb-4 lg:flex">
               <div className="flex flex-col items-start justify-start w-full h-auto mb-12 lg:w-1/3 lg:mb-0">
