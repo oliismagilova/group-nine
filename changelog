@@ -18,4 +18,10 @@
 
 1/25/2022
 
-- 
+- Added product page
+- Added few components for product page
+- Added product page, still need to set up dynamic routing
+- Relocated store page to store folder w/ index.jsx file, route remains the same
+- Added Sizes, Banner, Product, ColorChoice and a few other components
+- Added test enviroment to play around with UI components and various things so it doesn't break the current development
+- Need to fix issues with ColorChoice.jsx, have to use custom css classes instead of tailwindcss class -- should look into this
