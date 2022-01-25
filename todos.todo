@@ -1,1 +1,2 @@
-- Create main header for main page
+- line 238 inside ./components/Products/Products.jsx file someone needs to write a better description, highlights and details about the t-shirt.
+- need to add our own t-shirts rather than the placeholder images
