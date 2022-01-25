@@ -2,9 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* manual background colors for t-shirts because some tailwindcss classes won't compile */
+._orange_ {
+  /* bg-orange-600 */
+  background-color: rgb(234 88 12);
+}
+
+._red_ {
+  /* bg-red-700 */
+  background-color: rgb(185 28 28);
+}
+
+._yellow_ {
+  /* bg-amber-500 */
+  background-color: rgb(245 158 11);
+}
+
+._blue_ {
+  /* bg-cyan-700 */
+  background-color: rgb(14 116 144)
+}
+
 /* example */
 @layer base {
-  input, textarea {
+  input,
+  textarea {
     @apply block w-full;
   }
 }

@@ -1,6 +1,6 @@
 // will have to manage login state if we choose to have auth system -- meaning sign-in if no user is detected/sign-out if user is currently active (buttons)
 import Link from "next/link";
-import routes from "./routes";
+import routes from "@/constants/routes";
 
 export default function Navbar() {
   return (
