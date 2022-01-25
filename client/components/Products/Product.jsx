@@ -1,12 +1,11 @@
+// this component will load in the correct logo type and give the user to choose the color and size
 import Backslash from '../Utilities/Backslash'
-
 import ColorChoice from './ColorChoice'
 import Sizes from './Sizes'
-
 import colors from '@/constants/colors'
 import sizes from '@/constants/sizes'
 
-export default function Products() {
+export default function Product() {
   return (
     <div className="bg-white">
       <div className="pt-6">

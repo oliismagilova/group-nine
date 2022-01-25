@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar/Navbar'
 import Footer from '@/components/Footer/Footer'
 
 import '@/style/main.css'
+import Banner from '../components/Utilities/Banner'
 
 function Application({ Component, pageProps }) {
   return (
@@ -37,6 +38,7 @@ function Application({ Component, pageProps }) {
         <meta name="theme-color" content="#ffffff"></meta>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.0/alpine.js"></script>
       </Head>
+      <Banner color='bg-green-600' />
       <Navbar />
       <Component {...pageProps} />
       <Footer />

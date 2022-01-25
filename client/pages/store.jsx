@@ -1,10 +1,13 @@
 import React from 'react'
-import Products from '@/components/Products/Products'
+import Product from '@/components/Products/Product'
+import Store from '../components/Store/Store'
 
 export default function StorePage() {
   return (
     <div className="flex flex-col items-center justify-center px-4 py-32">
-      <Products />
+      {/* temporary */}
+      {/* <Product /> */}
+      <Store />
     </div>
   )
 }
