@@ -37,4 +37,6 @@ npm run start
 
 ## Zipped Submissions
 
-Please refer to the documents directory for zipped lab submissions for previous states of the project (zipped directory) and other documents related to submissions.
+To view zipped submissions <a href='https://github.com/quelchx/group-nine/tree/master/documents/zips'>click here</a>
+
+To view various sprint related documents <a href='https://github.com/quelchx/group-nine/tree/master/documents'>click here</a>
