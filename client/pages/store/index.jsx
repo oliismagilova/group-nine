@@ -2,7 +2,7 @@ import React from 'react'
 import Heading from '@/components/Store/Heading'
 import StoreItem from '@/components/Store/Products/StoreItem'
 
-import items from '../../constants/store'
+import items from '@/constants/store'
 
 export default function StorePage() {
   return (
@@ -16,7 +16,7 @@ export default function StorePage() {
             {items.map((item) => {
               return (
                 <StoreItem
-                  route={item.path}
+                  route={`/store/${item.name.toLowerCase()}`}
                   image={item.img}
                   name={item.name}
                   price={item.price}

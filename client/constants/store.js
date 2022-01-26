@@ -7,7 +7,7 @@ module.exports = [
     img: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
     name: 'Bottle',
     price: '35',
-    path: '/store',
+    path: '/',
   },
   {
     id: uuidv4(),

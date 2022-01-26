@@ -1,7 +1,8 @@
 // this component will load in the correct logo type and give the user to choose the color and size
-import Backslash from '../../Utilities/Backslash'
-import ColorChoice from './ColorChoice'
-import Sizes from './Sizes'
+import Backslash from '@/components/Utilities/Backslash'
+import ColorChoice from '@/components/Store/Products/ColorChoice'
+import Sizes from '@/components/Store/Products/Sizes'
+
 import colors from '@/constants/colors'
 import sizes from '@/constants/sizes'
 
