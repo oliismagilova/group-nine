@@ -26,3 +26,10 @@
 - Added test enviroment to play around with UI components and various things so it doesn't break the current development
 - Need to fix issues with ColorChoice.jsx, have to use custom css classes instead of tailwindcss class -- should look into this
 - Added checkout page and a basic UI for it.
+
+1/26/2022
+
+- Changed the navigation bar
+- Moved some files to different directories
+- Created a utility javascript file to import various functions from it (inside constants directory)
+- Added a tailwind utility class to limit really long class names inside the Navbar.jsx file.
