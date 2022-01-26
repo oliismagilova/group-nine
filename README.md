@@ -37,4 +37,4 @@ npm run start
 
 ## Zipped Submissions
 
-Please refer to the docs directory for zipped lab submissions and previous states of the project.
+Please refer to the documents directory for zipped lab submissions for previous states of the project (zipped directory) and other documents related to submissions.
