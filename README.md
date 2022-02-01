@@ -48,6 +48,8 @@ To view various sprint related documents <a href='https://github.com/quelchx/gro
 
 To view the product vision <a href='https://github.com/quelchx/group-nine/blob/master/documents/product/vision/Group_9_Product_Vision_Board.pdf'>here</a>
 
+## Product Backlog
+
 To view the product backlog <a href='https://github.com/quelchx/group-nine/tree/master/documents/product/backlog'>
 here</a>
 
