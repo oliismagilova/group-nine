@@ -19,15 +19,11 @@ module.exports = {
         lime: colors.lime,
         cyan: colors.cyan,
       },
-      // example
-      backgroundImage: (theme) => ({
-        photo:
-          "url('https://images.pexels.com/photos/1252890/pexels-photo-1252890.jpeg?cs=srgb&dl=pexels-hristo-fidanov-1252890.jpg&fm=jpg')",
-      }),
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  content: ['./node_modules/flowbite/**/*.js'],
+  plugins: [require('@tailwindcss/forms'), require('flowbite/plugin')],
 }
