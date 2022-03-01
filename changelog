@@ -1,35 +1,42 @@
 1/23/2022
 
-- Project repository created
-- Git commands added inside the review directory
-- Added styling and writing reference guide inside review directory
-- Client folder with tailwindcss config and next configuration is ready for development
+- Project repository created - Eric
+- Git commands added inside the review directory - Eric
+- Added styling and writing reference guide inside review directory - Eric
+- Client folder with tailwindcss config and next configuration is ready for development - Eric
 
-- Created temp directory to hold mock designs for various parts of the application
-- Created components directory + navigation bar
-- Created routes file to export various navigation routes
-- Created Navbar.jsx file and added various routes + navigation to app.js file
-- Created blank pages for navigation routes to load something.
+- Created temp directory to hold mock designs for various parts of the application - Eric
+- Created components directory + navigation bar - Eric
+- Created routes file to export various navigation routes - Eric
+- Created Navbar.jsx file and added various routes + navigation to app.js file - Eric
+- Created blank pages for navigation routes to load something. - Eric
 
 1/24/2022
 
-- Added to REFERENCES.md
-- Added hero/header section to main page
+- Added to REFERENCES.md - Eric
+- Added hero/header section to main page - Eric
 
 1/25/2022
 
-- Added product page
-- Added few components for product page
-- Added product page, still need to set up dynamic routing
-- Relocated store page to store folder w/ index.jsx file, route remains the same
-- Added Sizes, Banner, Product, ColorChoice and a few other components
-- Added test enviroment to play around with UI components and various things so it doesn't break the current development
-- Need to fix issues with ColorChoice.jsx, have to use custom css classes instead of tailwindcss class -- should look into this
-- Added checkout page and a basic UI for it.
+- Added product page - Eric
+- Added few components for product page - Eric
+- Added product page, still need to set up dynamic routing - Eric
+- Relocated store page to store folder w/ index.jsx file, route remains the same - Eric
+- Added Sizes, Banner, Product, ColorChoice and a few other components - Eric
+- Added test enviroment to play around with UI components and various things so it doesn't break the current development - Eric
+- Need to fix issues with ColorChoice.jsx, have to use custom css classes instead of tailwindcss class -- should look into this - Eric
+- Added checkout page and a basic UI for it. - Eric
 
 1/26/2022
 
-- Changed the navigation bar
-- Moved some files to different directories
-- Created a utility javascript file to import various functions from it (inside constants directory)
-- Added a tailwind utility class to limit really long class names inside the Navbar.jsx file.
+- Changed the navigation bar - Eric
+- Moved some files to different directories - Eric
+- Created a utility javascript file to import various functions from it (inside constants directory) - Eric
+- Added a tailwind utility class to limit really long class names inside the Navbar.jsx file. - Eric
+
+2/28/2022
+
+- Added Firebase CRUD operations to create content for store's database - Eric
+- About page has been added - Jose
+- Login + Registation system is undergoing creating - Reroig
+- Cart system for orders is undergoing creation

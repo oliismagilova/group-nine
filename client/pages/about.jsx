@@ -11,30 +11,30 @@ export default function AboutPage() {
       </h1>
 
       <div className="text-left">
-        <p class="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+        <p className="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
           Welcome to <strong>T-Shirts</strong>, your number one source for
           t-shirt’s emoji design. We're dedicated to providing you the very best
           quality, with an emphasis on social responsibility, and health.
         </p>
 
-        <p class="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+        <p className="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
           Founded in 2022 by <strong>Group Nine – Fanshawe College</strong>,
           T-Shirts has come a long way from its beginnings in London, Ontario.
           When we first started out, our passion for nutrition, exercise and
           healthy living lifestyles drove us to start our own business.
         </p>
 
-        <p class="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+        <p className="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
           We hope you enjoy our products as much as we enjoy creating and
           offering them to you. If you have any questions or comments, please
           don't hesitate to contact us.
         </p>
 
-        <p class="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+        <p className="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
           Sincerely,
         </p>
 
-        <p class="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+        <p className="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
           Group Nine – Fanshawe College
         </p>
       </div>

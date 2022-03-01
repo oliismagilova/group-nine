@@ -3,6 +3,8 @@ import Backslash from '@/components/Utilities/Backslash'
 import ColorChoice from '@/components/Store/Products/ColorChoice'
 import Sizes from '@/components/Store/Products/Sizes'
 
+import Link from 'next/link'
+
 import colors from '@/constants/colors'
 import sizes from '@/constants/sizes'
 
@@ -17,25 +19,17 @@ export default function Product() {
           >
             <li>
               <div className="flex items-center">
-                <a href="#" className="mr-2 text-sm font-medium text-gray-900">
-                  Men
-                </a>
-                <Backslash />
-              </div>
-            </li>
-
-            <li>
-              <div className="flex items-center">
-                <a href="#" className="mr-2 text-sm font-medium text-gray-900">
-                  Clothing
-                </a>
+                <Link href={'/store'}>
+                  <a className="mr-2 text-sm font-medium text-gray-900">
+                    Store
+                  </a>
+                </Link>
                 <Backslash />
               </div>
             </li>
 
             <li className="text-sm">
               <a
-                href="#"
                 aria-current="page"
                 className="font-medium text-gray-500 hover:text-gray-600"
               >
