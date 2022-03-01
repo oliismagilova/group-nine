@@ -30,9 +30,6 @@ export default function StorePage() {
               return (
                 <StoreItem
                   route={`/store/${item.name.toLowerCase()}`}
-                  img={
-                    'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F1e%2F86%2F1e86c77fb86afc19daad9acb5b39470e7bc5ca1f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_tshirtstanks_shortsleeve%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]'
-                  }
                   name={item.name}
                   price={item.price}
                 />
