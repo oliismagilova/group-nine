@@ -85,7 +85,32 @@ export default function Navbar() {
               </div>
             </div>
           </div>
+
+
+
+
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+
+          <div className="relative flex flex-col sm:flex-row sm:space-x-4">
+              {/* TODO: Login button */}
+              <div className="order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto">
+                <Link href="/login">
+                    <a className="flex items-center px-6 py-3 text-gray-600 bg-gray-200 rounded-md hover:bg-gray-300 hover:text-gray-600">
+                      Login
+                    </a>
+                </Link>
+              </div>
+            
+              {/* TODO: Register button */}
+              <div className="order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto">
+                <Link href="/register">
+                  <a className="flex items-center px-6 py-3 text-gray-600 bg-gray-200 rounded-md hover:bg-gray-300 hover:text-gray-600">
+                    Register
+                  </a>
+                </Link>
+              </div>
+            </div>  
+                        
             <button
               type="button"
               className="bg-green-600 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"

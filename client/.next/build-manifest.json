@@ -30,15 +30,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/store": [
+    "/login": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/store.js"
+      "static/chunks/pages/login.js"
     ],
-    "/store/[id]": [
+    "/register": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/store/[id].js"
+      "static/chunks/pages/register.js"
     ]
   },
   "ampFirstPages": []
