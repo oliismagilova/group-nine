@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 
-import routes from '@/constants/routes'
+import routes from '../../routes'
 import toggleMenu from '@/constants/utils'
 
 export default function Navbar() {
@@ -67,7 +67,9 @@ export default function Navbar() {
                 src="https://cdn-icons-png.flaticon.com/512/135/135620.png"
                 alt="Workflow"
               />
-              <p className='hidden font-bold text-white lg:block px-2'>T-Shirts</p>
+              <p className="hidden font-bold text-white lg:block px-2">
+                T-Shirts
+              </p>
             </div>
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
