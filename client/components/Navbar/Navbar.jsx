@@ -161,7 +161,6 @@ export default function Navbar() {
                 aria-labelledby="user-menu-button"
                 tabIndex="-1"
               >
-                {/* if user isLoggedIn signIsed gedIn  = useState(false)*/}
                 {isLoggedIn && (
                   <>
                     <a
@@ -186,24 +185,24 @@ export default function Navbar() {
                 )}
                 {!isLoggedIn && (
                   <>
-                   <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700"
-                    role="menuitem"
-                    tabIndex="-1"
-                    id="user-menu-item-1"
-                  >
-                    Register
-                  </a>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700"
-                    role="menuitem"
-                    tabIndex="-1"
-                    id="user-menu-item-2"
-                  >
-                    Sign In
-                  </a>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-sm text-gray-700"
+                      role="menuitem"
+                      tabIndex="-1"
+                      id="user-menu-item-1"
+                    >
+                      Register
+                    </a>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-sm text-gray-700"
+                      role="menuitem"
+                      tabIndex="-1"
+                      id="user-menu-item-2"
+                    >
+                      Sign In
+                    </a>
                   </>
                 )}
               </div>

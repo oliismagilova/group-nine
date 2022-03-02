@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Navbar from '@/components/Navbar/Navbar'
 import Footer from '@/components/Footer/Footer'
+import Banner from '../components/Utilities/Banner'
 
 import '@/style/main.css'
-import Banner from '../components/Utilities/Banner'
 
 function Application({ Component, pageProps }) {
   return (
@@ -36,13 +36,18 @@ function Application({ Component, pageProps }) {
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff"></meta>
-        <link rel="stylesheet" href="https://unpkg.com/flowbite@1.3.4/dist/flowbite.min.css" />
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/flowbite@1.3.4/dist/flowbite.min.css"
+        />
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.0/alpine.js"></script>
       </Head>
-      <Banner color='bg-green-600' />
+      <Banner color="bg-green-600" />
       <Navbar />
-      <Component {...pageProps} />
+      <main id="_app_">
+        <Component {...pageProps} />
+      </main>
       <Footer />
     </section>
   )

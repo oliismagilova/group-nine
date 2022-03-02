@@ -1,142 +1,147 @@
-import { react, useState } from 'react';
+import { react, useState } from 'react'
 
 export default function Register() {
-
   // States for registration
-  const [name,     setName]       = useState('');
-  const [email,    setEmail]      = useState('');
-  const [password, setPassword]   = useState('');
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   // States for checking the errors
-  const [submitted,   setSubmitted]   = useState(false);
-  const [error,       setError]       = useState(false);
-  const [isUserValid, setIsUserValid] = useState(false);
+  const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState(false)
+  const [isUserValid, setIsUserValid] = useState(false)
 
   // Handling the name change
   const handleName = (e) => {
-    setName(e.target.value);
-    setSubmitted(false);
-  };
+    setName(e.target.value)
+    setSubmitted(false)
+  }
 
   // Handling the email change
   const handleEmail = (e) => {
-    setEmail(e.target.value);
-    setSubmitted(false);
-  };
+    setEmail(e.target.value)
+    setSubmitted(false)
+  }
 
   // Handling the password change
   const handlePassword = (e) => {
-    setPassword(e.target.value);
-    setSubmitted(false);
-  };
+    setPassword(e.target.value)
+    setSubmitted(false)
+  }
 
   // Handling the form submission
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (email === '' || password === '') {
-        setError(true);
-    } 
-    else {
-        setSubmitted(true);
-        setError(false);
+      setError(true)
+    } else {
+      setSubmitted(true)
+      setError(false)
     }
-  };
+  }
 
   const hadelUserValidation = (e) => {
     //   TODO: Pending to assign the user validation
-      setIsUserValid(true);
+    setIsUserValid(true)
   }
 
   // Showing success message
   const successMessage = () => {
     return (
-    <div
-      className="success"
-      style={{
-      display: submitted ? '' : 'none',
-      }}>
-      <h1>User {name} successfully registered!!</h1>
-    </div>
-    );
-  };
+      <div
+        className="success"
+        style={{
+          display: submitted ? '' : 'none',
+        }}
+      >
+        <h1>User {name} successfully registered!!</h1>
+      </div>
+    )
+  }
 
   // Showing error message if error is true
   const errorMessage = () => {
     return (
-    <div
-      className="error"
-      style={{
-      display: error ? '' : 'none',
-      }}>
-      <h1>Please enter all the fields</h1>
-    </div>
-    );
-  };
+      <div
+        className="error"
+        style={{
+          display: error ? '' : 'none',
+        }}
+      >
+        <h1>Please enter all the fields</h1>
+      </div>
+    )
+  }
 
   const errorUserValidation = () => {
     return (
-    <div
-      className="error"
-      style={{
-      display: isUserValid ? '' : 'none',
-      }}>
-      <h1>Not a valid user or password</h1>
-    </div>
-    );
-  };
-
+      <div
+        className="error"
+        style={{
+          display: isUserValid ? '' : 'none',
+        }}
+      >
+        <h1>Not a valid user or password</h1>
+      </div>
+    )
+  }
 
   return (
-
     <div className="form">
-          <div className="container flex flex-col items-start mx-auto lg:items-center">
-            <h2 className="relative flex items-start justify-start w-full max-w-3xl text-5xl font-bold lg:justify-center">
-              <span className="block xl:inline">User Login</span>
-            </h2>
-            
-            <p className="relative flex items-start justify-start w-full text-lg font-bold tracking-wider text-green-500 uppercase lg:justify-center lg:items-center">
-              {/* Calling to the methods */}
-              <div className="messages">
-                {errorMessage()}
-                {errorUserValidation}                
-                {successMessage()}
-              </div>
+      <div className="container flex flex-col items-start mx-auto lg:items-center">
+        <h2 className="relative flex items-start justify-start w-full max-w-3xl text-5xl font-bold lg:justify-center">
+          <span className="block xl:inline">User Login</span>
+        </h2>
 
-              <form>
-                {/* Labels and inputs for form data */}
-                <label className="label">Email</label>
-                <input onChange={handleEmail} className="input"
-                value={email} type="email" />
+        <p className="relative flex items-start justify-start w-full text-lg font-bold tracking-wider text-green-500 uppercase lg:justify-center lg:items-center">
+          {/* Calling to the methods */}
+          <div className="messages">
+            {errorMessage()}
+            {errorUserValidation}
+            {successMessage()}
+          </div>
 
-                <label className="label">Password</label>
-                <input onChange={handlePassword} className="input"
-                value={password} type="password" />
+          <form>
+            {/* Labels and inputs for form data */}
+            <label className="label">Email</label>
+            <input
+              onChange={handleEmail}
+              className="input"
+              value={email}
+              type="email"
+            />
 
-                {/* <div className="relative flex flex-col sm:flex-row sm:space-x-4"> */}
-                  <a className="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-green-600 rounded-md sm:mb-0 hover:bg-green-700 sm:w-auto">
-                    Submit
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-5 h-5 ml-1"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                    </svg>
-                  </a>                
+            <label className="label">Password</label>
+            <input
+              onChange={handlePassword}
+              className="input"
+              value={password}
+              type="password"
+            />
 
-                  <a className="flex items-center px-6 py-3 text-gray-600 bg-gray-200 rounded-md hover:bg-gray-300 hover:text-gray-600">
-                    Forgot my password
-                  </a>                  
-                {/* </div> */}
-              </form>
-            </p>
-          <div/>
+            {/* <div className="relative flex flex-col sm:flex-row sm:space-x-4"> */}
+            <a className="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-green-600 rounded-md sm:mb-0 hover:bg-green-700 sm:w-auto">
+              Submit
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5 ml-1"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              ></svg>
+            </a>
+
+            <a className="flex items-center px-6 py-3 text-gray-600 bg-gray-200 rounded-md hover:bg-gray-300 hover:text-gray-600">
+              Forgot my password
+            </a>
+            {/* </div> */}
+          </form>
+        </p>
+        <div />
       </div>
     </div>
-  );
+  )
 }
-

@@ -40,3 +40,7 @@
 - About page has been added - Jose
 - Login + Registation system is undergoing creating - Reroig
 - Cart system for orders is undergoing creation
+
+3/2/2022
+
+- Temporary fixes to navigation bars buttons, buttons were moved to dropdown menu and temporary state has been added to show sign in or out buttons depending on user state (hasn't been added yet) - Eric
