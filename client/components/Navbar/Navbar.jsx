@@ -1,4 +1,4 @@
-// will have to manage login state if we choose to have auth system -- meaning sign-in if no user is detected/sign-out if user is currently active (buttons)
+// will have to manage login state if we choose to have auth system -- meaning sign-in if no user isLoggedIn deteIsctegedIns = useState(false)ign-out if user isLoggedIn currIsentgedIn  = useState(false)active (buttons)
 import React, { useState } from 'react'
 import Link from 'next/link'
 
@@ -6,6 +6,8 @@ import routes from '../../routes'
 import toggleMenu from '@/constants/utils'
 
 export default function Navbar() {
+  // TEMPORARY STATE
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
   return (
     <nav className="bg-green-600">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -86,13 +88,10 @@ export default function Navbar() {
             </div>
           </div>
 
-
-
-
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            {/* THESE BUTTONS NEED TO BE INSIDE THE DROPDOWN MENU -- THIS BREAKS THE RESPONSIVENESS OF THE NAVBAR  */}
 
-          <div className="relative flex flex-col sm:flex-row sm:space-x-4">
-              {/* TODO: Login button */}
+            {/* <div className="relative flex flex-col sm:flex-row sm:space-x-4">
               <div className="order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto">
                 <Link href="/login">
                     <a className="flex items-center px-6 py-3 text-gray-600 bg-gray-200 rounded-md hover:bg-gray-300 hover:text-gray-600">
@@ -100,8 +99,6 @@ export default function Navbar() {
                     </a>
                 </Link>
               </div>
-            
-              {/* TODO: Register button */}
               <div className="order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto">
                 <Link href="/register">
                   <a className="flex items-center px-6 py-3 text-gray-600 bg-gray-200 rounded-md hover:bg-gray-300 hover:text-gray-600">
@@ -109,8 +106,8 @@ export default function Navbar() {
                   </a>
                 </Link>
               </div>
-            </div>  
-                        
+            </div>   */}
+
             <button
               type="button"
               className="bg-green-600 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
@@ -147,7 +144,7 @@ export default function Navbar() {
                   }
                 >
                   <span className="sr-only">Open user menu</span>
-                  {/* avatar */}
+                  {/* AVATAR*/}
                   <img
                     className="h-8 w-8 rounded-full"
                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -164,33 +161,51 @@ export default function Navbar() {
                 aria-labelledby="user-menu-button"
                 tabIndex="-1"
               >
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
-                  tabIndex="-1"
-                  id="user-menu-item-0"
-                >
-                  Your Profile
-                </a>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
-                  tabIndex="-1"
-                  id="user-menu-item-1"
-                >
-                  Settings
-                </a>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
-                  tabIndex="-1"
-                  id="user-menu-item-2"
-                >
-                  Sign out
-                </a>
+                {/* if user isLoggedIn signIsed gedIn  = useState(false)*/}
+                {isLoggedIn && (
+                  <>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-sm text-gray-700"
+                      role="menuitem"
+                      tabIndex="-1"
+                      id="user-menu-item-0"
+                    >
+                      Your Profile
+                    </a>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-sm text-gray-700"
+                      role="menuitem"
+                      tabIndex="-1"
+                      id="user-menu-item-2"
+                    >
+                      Sign Out
+                    </a>
+                  </>
+                )}
+                {!isLoggedIn && (
+                  <>
+                   <a
+                    href="#"
+                    className="block px-4 py-2 text-sm text-gray-700"
+                    role="menuitem"
+                    tabIndex="-1"
+                    id="user-menu-item-1"
+                  >
+                    Register
+                  </a>
+                  <a
+                    href="#"
+                    className="block px-4 py-2 text-sm text-gray-700"
+                    role="menuitem"
+                    tabIndex="-1"
+                    id="user-menu-item-2"
+                  >
+                    Sign In
+                  </a>
+                  </>
+                )}
               </div>
             </div>
           </div>
