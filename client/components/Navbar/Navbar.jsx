@@ -5,9 +5,19 @@ import Link from 'next/link'
 import routes from '../../routes'
 import toggleMenu from '@/constants/utils'
 
+import { useUserAuth } from '../../context/UserAuthContext'
+
 export default function Navbar() {
-  // TEMPORARY STATE
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const { user, logOut } = useUserAuth()
+
+  const handleLogout = async () => {
+    try {
+      await logOut()
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <nav className="bg-green-600">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -107,29 +117,21 @@ export default function Navbar() {
                 </Link>
               </div>
             </div>   */}
-
-            <button
+            {user && 
+             (
+              <button
               type="button"
               className="bg-green-600 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
             >
               <span className="sr-only">View notifications</span>
               {/* this will need to change - notification */}
-              <svg
-                className="h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="white"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                />
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill='white' d="M24 3l-.743 2h-1.929l-3.474 12h-13.239l-4.615-11h16.812l-.564 2h-13.24l2.937 7h10.428l3.432-12h4.195zm-15.5 15c-.828 0-1.5.672-1.5 1.5 0 .829.672 1.5 1.5 1.5s1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm6.9-7-1.9 7c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5z"/>
               </svg>
-            </button>
+             </button>
+             )
+            }
+            
 
             <div className="ml-3 relative">
               <div>
@@ -147,8 +149,8 @@ export default function Navbar() {
                   {/* AVATAR*/}
                   <img
                     className="h-8 w-8 rounded-full"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt=""
+                    src="https://as2.ftcdn.net/v2/jpg/03/49/49/79/1000_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg"
+                    alt="avatar"
                   />
                 </button>
               </div>
@@ -161,19 +163,20 @@ export default function Navbar() {
                 aria-labelledby="user-menu-button"
                 tabIndex="-1"
               >
-                {isLoggedIn && (
+                {user && (
                   <>
+                   <Link href='/'>
                     <a
-                      href="#"
                       className="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-0"
                     >
-                      Your Profile
+                      Dashboard
                     </a>
+                    </Link>
                     <a
-                      href="#"
+                      onClick={handleLogout}
                       className="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
                       tabIndex="-1"
@@ -182,10 +185,12 @@ export default function Navbar() {
                       Sign Out
                     </a>
                   </>
+                 
                 )}
-                {!isLoggedIn && (
+                {!user && (
                   <>
-                    <a
+                  <Link href='/auth/register'>
+                  <a
                       href="#"
                       className="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
@@ -194,6 +199,8 @@ export default function Navbar() {
                     >
                       Register
                     </a>
+                  </Link>
+                  <Link href='/auth/login'>
                     <a
                       href="#"
                       className="block px-4 py-2 text-sm text-gray-700"
@@ -203,6 +210,7 @@ export default function Navbar() {
                     >
                       Sign In
                     </a>
+                    </Link>
                   </>
                 )}
               </div>

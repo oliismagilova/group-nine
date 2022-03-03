@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ProductDataService from '../../services/product.services'
 
-export default function AddProduct({ id, setProductId }) {
+export default function AddProduct({ id, setProductId}) {
   const [title, setTitle] = useState('')
   const [price, setPrice] = useState(0)
   const [desc, setDesc] = useState('')
@@ -81,7 +81,6 @@ export default function AddProduct({ id, setProductId }) {
               <h3 className="text-lg font-medium leading-6 text-gray-900">
                 Admin Inventory
               </h3>
-              <p className="mt-1 text-sm text-gray-600">User:</p>
               <>
                 {message?.msg && (
                   <p className="mt-1 text-sm text-red-600">{message.msg}</p>

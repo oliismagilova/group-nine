@@ -1,16 +1,17 @@
-import Head from 'next/head'
 import Header from '@/components/Header/Header'
+import ContainerBlock from '../layout/ContainerBlock'
+import Banner from '../components/Utilities/Banner'
+import meta from '../constants/meta'
 
 export default function Home() {
   return (
+    <>
+        <Banner color="bg-green-800" />
+    
+    <ContainerBlock title={meta.index.title} description={meta.index.description}>
     <div className="flex flex-col items-center justify-center px-4 py-32">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       {/* hero section */}
       <Header />
-
       {/* quote section */}
       <section className="flex items-center justify-center py-20 bg-white min-w-screen">
         <div className="px-16 bg-white">
@@ -117,5 +118,7 @@ export default function Home() {
         </div>
       </section>
     </div>
+    </ContainerBlock>
+    </>
   )
 }
