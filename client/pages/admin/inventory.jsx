@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react'
+import AdminOnlyRoute from '../../components/Auth/AdminOnlyRoute'
 import AddProduct from '../../components/Inventory/AddProduct'
 import ProductList from '../../components/Inventory/ProductList'
 
-import ProtectedRoute from '../../components/Auth/ProtectedRoute'
-import { useUserAuth } from '../../context/UserAuthContext'
+// import { useUserAuth } from '../../context/UserAuthContext'
 
-export default function PortalPage() {
+export default function PortalPage({email}) {
   const [productId, setProductId] = useState('')
-
-  const { user } = useUserAuth()
 
   const getProductHandler = (id) => {
     setProductId(id)
   }
 
   return (
-    <ProtectedRoute>
+    <AdminOnlyRoute email={email}>
       <div className="p-2">
         <div className="mx-2">
           <AddProduct id={productId} setProductId={setProductId} />
@@ -29,6 +27,15 @@ export default function PortalPage() {
           <ProductList getProductId={getProductHandler} />
         </div>
       </div>
-    </ProtectedRoute>
+    </AdminOnlyRoute>
   )
+}
+
+export async function getStaticProps() {
+  const email = process.env.ADMIN_EMAIL
+  return {
+    props: {
+      email
+    }
+  }
 }

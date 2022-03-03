@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app'
 
 import { getFirestore } from 'firebase/firestore'
-// import { getAnalytics } from 'firebase/analytics'
+import { getAnalytics } from 'firebase/analytics'
 import { getAuth } from 'firebase/auth'
 
 // leaving configuration inside here due to .env variables causing firebase auth to not function
@@ -19,8 +19,7 @@ const app = initializeApp(firebaseConfig)
 
 export const auth = getAuth(app)
 export const db = getFirestore(app)
-// export const analytics = getAnalytics(app)
+export const analytics = getAnalytics(app)
 
 export default app
-
 // https://firebase.google.com/
