@@ -19,7 +19,7 @@ export default function ProductList({ getProductId }) {
   }
 
   function renderStatus(status) {
-    if (status === true) {
+    if (status === 'true') {
       return (
         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
           In Stock
@@ -78,7 +78,7 @@ export default function ProductList({ getProductId }) {
                     scope="col"
                     className="px-12 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    QTY
+                    Image Link
                   </th>
                   <th scope="col" className="relative px-6 py-3">
                     <span className="sr-only">Edit</span>
@@ -113,7 +113,9 @@ export default function ProductList({ getProductId }) {
                         {doc.price}
                       </td>
                       <td className="px-12 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {doc.qty}
+                        {doc.img.length > 30
+                          ? doc.img.substring(0, 30) + '...'
+                          : doc.img}
                       </td>
                       <td className="py- whitespace-nowrap text-left text-sm font-medium">
                         <button

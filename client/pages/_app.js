@@ -1,18 +1,15 @@
 import '@/style/main.css'
-
-import Head from 'next/head'
-
-
-import { UserAuthContextProvider } from '../context/UserAuthContext'
+import { UserAuthContextProvider } from '@/context/UserAuthContext'
+import { CartState } from '../context/Cart/CartState'
 
 function Application({ Component, pageProps }) {
-  
-
   return (
     <UserAuthContextProvider>
-      <main id="_app_">
-        <Component {...pageProps} />
-      </main>
+      <CartState>
+        <main id="_app_">
+          <Component {...pageProps} />
+        </main>
+      </CartState>
     </UserAuthContextProvider>
   )
 }

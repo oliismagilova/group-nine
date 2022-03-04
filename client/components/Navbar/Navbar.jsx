@@ -1,19 +1,23 @@
 // will have to manage login state if we choose to have auth system -- meaning sign-in if no user isLoggedIn deteIsctegedIns = useState(false)ign-out if user isLoggedIn currIsentgedIn  = useState(false)active (buttons)
-import React, { useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
 
 import routes from '../../routes'
 import toggleMenu from '@/constants/utils'
 
 import { useUserAuth } from '../../context/UserAuthContext'
+import { useCartContext } from '../../context/Cart/CartState'
 
 export default function Navbar() {
   const { user, logOut } = useUserAuth()
+
+  const { cartItems } = useCartContext()
 
   const handleLogout = async () => {
     try {
       await logOut()
     } catch (err) {
+      // change this eventually
       console.log(err)
     }
   }
@@ -117,21 +121,26 @@ export default function Navbar() {
                 </Link>
               </div>
             </div>   */}
-            {user && 
-             (
-              <button
-              type="button"
-              className="bg-green-600 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-            >
-              <span className="sr-only">View notifications</span>
-              {/* this will need to change - notification */}
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path fill='white' d="M24 3l-.743 2h-1.929l-3.474 12h-13.239l-4.615-11h16.812l-.564 2h-13.24l2.937 7h10.428l3.432-12h4.195zm-15.5 15c-.828 0-1.5.672-1.5 1.5 0 .829.672 1.5 1.5 1.5s1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm6.9-7-1.9 7c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5z"/>
-              </svg>
-             </button>
-             )
-            }
-            
+            {user && (
+              <Link href="/store" type="button">
+                <button className="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:ring-blue-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="white"
+                      d="M24 3l-.743 2h-1.929l-3.474 12h-13.239l-4.615-11h16.812l-.564 2h-13.24l2.937 7h10.428l3.432-12h4.195zm-15.5 15c-.828 0-1.5.672-1.5 1.5 0 .829.672 1.5 1.5 1.5s1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm6.9-7-1.9 7c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5z"
+                    />
+                  </svg>
+                  <span className="inline-flex justify-center items-center ml-2 w-6 h-6 text-xs font-semibold text-green-800 bg-green-100 rounded-full">
+                    {cartItems.length}
+                  </span>
+                </button>
+              </Link>
+            )}
 
             <div className="ml-3 relative">
               <div>
@@ -165,15 +174,15 @@ export default function Navbar() {
               >
                 {user && (
                   <>
-                   <Link href='/'>
-                    <a
-                      className="block px-4 py-2 text-sm text-gray-700"
-                      role="menuitem"
-                      tabIndex="-1"
-                      id="user-menu-item-0"
-                    >
-                      Dashboard
-                    </a>
+                    <Link href="/">
+                      <a
+                        className="block px-4 py-2 text-sm text-gray-700"
+                        role="menuitem"
+                        tabIndex="-1"
+                        id="user-menu-item-0"
+                      >
+                        Dashboard
+                      </a>
                     </Link>
                     <a
                       onClick={handleLogout}
@@ -185,31 +194,30 @@ export default function Navbar() {
                       Sign Out
                     </a>
                   </>
-                 
                 )}
                 {!user && (
                   <>
-                  <Link href='/auth/register'>
-                  <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700"
-                      role="menuitem"
-                      tabIndex="-1"
-                      id="user-menu-item-1"
-                    >
-                      Register
-                    </a>
-                  </Link>
-                  <Link href='/auth/login'>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700"
-                      role="menuitem"
-                      tabIndex="-1"
-                      id="user-menu-item-2"
-                    >
-                      Sign In
-                    </a>
+                    <Link href="/auth/register">
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700"
+                        role="menuitem"
+                        tabIndex="-1"
+                        id="user-menu-item-1"
+                      >
+                        Register
+                      </a>
+                    </Link>
+                    <Link href="/auth/login">
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700"
+                        role="menuitem"
+                        tabIndex="-1"
+                        id="user-menu-item-2"
+                      >
+                        Sign In
+                      </a>
                     </Link>
                   </>
                 )}

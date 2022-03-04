@@ -3,9 +3,9 @@ import ProductDataService from '../../services/product.services'
 
 export default function AddProduct({ id, setProductId}) {
   const [title, setTitle] = useState('')
-  const [price, setPrice] = useState(0)
+  const [price, setPrice] = useState(25)
   const [desc, setDesc] = useState('')
-  const [qty, setQty] = useState(0)
+  const [img, setImage] = useState('')
   const [avail, setAvail] = useState(true)
   const [message, setMessage] = useState({ error: false, msg: '' })
 
@@ -13,7 +13,8 @@ export default function AddProduct({ id, setProductId}) {
     setTitle('')
     setDesc('')
     setPrice(0)
-    setQty(0)
+    setImage("")
+    setAvail(true)
   }
 
   const handleSubmit = async (e) => {
@@ -22,7 +23,7 @@ export default function AddProduct({ id, setProductId}) {
 
     if (title === '' || desc === '') {
       setMessage({ error: true, msg: 'All fields are manditory' })
-    } else if (price <= 0 || qty <= -1) {
+    } else if (price <= 0 ) {
       setMessage({
         error: true,
         msg: 'The product has to have a price and quantity',
@@ -33,7 +34,7 @@ export default function AddProduct({ id, setProductId}) {
       name: title,
       price: price,
       description: desc,
-      qty: qty,
+      img: img,
       status: avail,
     }
 
@@ -59,7 +60,7 @@ export default function AddProduct({ id, setProductId}) {
       setTitle(docSnap.data().name)
       setDesc(docSnap.data().description)
       setAvail(docSnap.data().status)
-      setQty(docSnap.data().qty)
+      setImage(docSnap.data().img)
       setPrice(docSnap.data().price)
     } catch (err) {
       setMessage({ error: true, msg: err.message })
@@ -100,8 +101,9 @@ export default function AddProduct({ id, setProductId}) {
                       </label>
                       <input
                         type="text"
-                        placeholder="title"
+                        placeholder="Product Name"
                         value={title}
+                        required
                         onChange={(e) => setTitle(e.target.value)}
                         className="_input_"
                       />
@@ -116,6 +118,7 @@ export default function AddProduct({ id, setProductId}) {
                         placeholder="$0.00"
                         className="_input_"
                         value={price}
+                        required
                         onChange={(e) => setPrice(e.target.value)}
                       />
                     </div>
@@ -127,19 +130,22 @@ export default function AddProduct({ id, setProductId}) {
                       <textarea
                         placeholder="Product Description"
                         value={desc}
+                        required
                         onChange={(e) => setDesc(e.target.value)}
                         className="_input_"
                       />
                     </div>
 
-                    <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                    <div className="col-span-6">
                       <label className="block text-sm font-medium text-gray-700">
-                        Quantity
+                        Image Link
                       </label>
                       <input
-                        value={qty}
-                        onChange={(e) => setQty(e.target.value)}
-                        type="number"
+                        value={img}
+                        placeholder='Image Link'
+                        onChange={(e) => setImage(e.target.value)}
+                        type="text"
+                        required
                         className="_input_"
                       />
                     </div>
@@ -153,8 +159,8 @@ export default function AddProduct({ id, setProductId}) {
                         onChange={(e) => setAvail(e.target.value)}
                         className="_input_"
                       >
-                        <option value={true}>In Stock</option>
-                        <option value={false}>Out Of Stock</option>
+                        <option value='true'>In Stock</option>
+                        <option value='false'>Out Of Stock</option>
                       </select>
                     </div>
                   </div>

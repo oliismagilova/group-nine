@@ -4,31 +4,25 @@ import { useUserAuth } from '../../context/UserAuthContext';
 
 const AdminOnlyRoute = ({ children, email }) => {
   const router = useRouter()
-  const [loading, setLoading] = useState(true)
+  const [authorized, setAuthorized] = useState(false)
 
   const { user } = useUserAuth()
 
   useEffect(() => {
-    if (user) {
-      if (user.email !== email) {
-        router.push('/auth/login')
-      }
-      setLoading(false)
-
+    if (user && user.email === email) {
+      setAuthorized(true)
     }
-
     
+  }, [user])
 
-  }, [user, loading])
-
-
-  if (loading) {
+  if (!authorized) {
     return (
       <>
-        <div>loading...</div>
+        <div>Access Denied</div>
       </>
     )
   }
+
 
   return (
     <>

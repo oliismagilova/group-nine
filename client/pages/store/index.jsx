@@ -20,7 +20,10 @@ export default function StorePage() {
   }
 
   return (
-    <ContainerBlock title={meta.store.title} description={meta.store.description}>
+    <ContainerBlock
+      title={meta.store.title}
+      description={meta.store.description}
+    >
       <div className="flex flex-col items-center justify-center px-4 py-32">
         <Heading />
         <div className="bg-white">
@@ -28,12 +31,14 @@ export default function StorePage() {
             <h2 className="sr-only">Products</h2>
 
             <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-              {products.map((item) => {
+              {products.map((item, idx) => {
                 return (
                   <StoreItem
+                    key={idx}
                     route={`/store/${item.id}`}
                     name={item.name}
                     price={item.price}
+                    image={item.img}
                   />
                 )
               })}

@@ -1,25 +1,33 @@
 import React, { useEffect, useState } from 'react'
-
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-
-import meta from '@/constants/meta'
-import colors from '@/constants/colors'
 import sizes from '@/constants/sizes'
-
-import Sizes from '@/components/Store/Products/Sizes'
 import Backslash from '@/components/Utilities/Backslash'
-import ColorChoice from '@/components/Store/Products/ColorChoice'
-
 import ContainerBlock from '@/layout/ContainerBlock'
-
 import ProductDataService from '@/services/product.services'
+
+import { useCartContext } from '../../context/Cart/CartState'
+
 
 export default function Product() {
   const router = useRouter()
   const [loading, setLoading] = useState(true)
   const [products, setProducts] = useState([])
   const [product, setProduct] = useState([])
+
+  const [size, setSize] = useState('')
+  const [qty, setQty] = useState(1)
+
+  const { addToCart } = useCartContext()
+
+  const addItem = (e) => {
+    e.preventDefault()
+    addToCart({
+      product: product,
+      size: size,
+      qty: qty,
+    })
+  }
 
   useEffect(() => {
     getProducts()
@@ -28,13 +36,13 @@ export default function Product() {
   const getProducts = async () => {
     const data = await ProductDataService.getAllProducts()
     setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-    
-    const found = await products.find(el => el.id === router.query.id)
+
+    const found = await products.find((el) => el.id === router.query.id)
 
     if (found) {
       setProduct(found)
     }
-    
+
     setLoading(false)
   }
 
@@ -48,7 +56,10 @@ export default function Product() {
   }
 
   return (
-    <ContainerBlock title={`Store - ` + product.name} description={product.description}>
+    <ContainerBlock
+      title={`Store - ` + product.name}
+      description={product.description}
+    >
       <div className="bg-white">
         <div className="pt-6">
           <nav aria-label="Breadcrumb">
@@ -120,7 +131,9 @@ export default function Product() {
 
             <div className="mt-4 lg:mt-0 lg:row-span-3">
               <h2 className="sr-only">Product information</h2>
-              <p className="text-3xl text-gray-900">${product.price}</p>
+              <p className="text-3xl text-gray-900">
+                ${product.price} - Per 6 Pack
+              </p>
 
               <div className="mt-6">
                 <h3 className="sr-only">Reviews</h3>
@@ -185,8 +198,8 @@ export default function Product() {
                 </div>
               </div>
 
-              <form className="mt-10">
-                <div>
+              <form onSubmit={addItem} className="mt-10">
+                {/* <div>
                   <h3 className="text-sm text-gray-900 font-medium">Color</h3>
 
                   <fieldset className="mt-4">
@@ -199,58 +212,47 @@ export default function Product() {
                       })}
                     </div>
                   </fieldset>
-                </div>
+                </div> */}
 
-                <div className="mt-10">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-sm text-gray-900 font-medium">Size</h3>
-                    <a
-                      href="#"
-                      className="text-sm font-medium text-green-600 hover:text-green-500"
+                <div className="grid grid-cols-6 gap-6">
+                  <div className="col-span-6 sm:col-span-4 lg:col-span-3">
+                    <label
+                      htmlFor="password"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                     >
-                      Size guide
-                    </a>
+                      Quantity
+                    </label>
+                    <input
+                      type="number"
+                      value={qty}
+                      onChange={(e) => setQty(e.target.value)}
+                      id="amount"
+                      className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                      required
+                    />
                   </div>
 
-                  <fieldset className="mt-4">
-                    <legend className="sr-only">Choose a size</legend>
-                    <div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
-                      <label className="group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 bg-gray-50 text-gray-200 cursor-not-allowed">
-                        <input
-                          type="radio"
-                          name="size-choice"
-                          value="XXS"
-                          disabled
-                          className="sr-only"
-                          aria-labelledby="size-choice-0-label"
-                        />
-                        <p id="size-choice-0-label">XXS</p>
-
-                        <div
-                          aria-hidden="true"
-                          className="absolute -inset-px rounded-md border-2 border-gray-200 pointer-events-none"
-                        >
-                          <svg
-                            className="absolute inset-0 w-full h-full text-gray-200 stroke-2"
-                            viewBox="0 0 100 100"
-                            preserveAspectRatio="none"
-                            stroke="currentColor"
-                          >
-                            <line
-                              x1="0"
-                              y1="100"
-                              x2="100"
-                              y2="0"
-                              vectorEffect="non-scaling-stroke"
-                            />
-                          </svg>
-                        </div>
-                      </label>
-                      {sizes.map((size, idx) => {
-                        return <Sizes key={idx} size={size.size} />
+                  <div className="col-span-6 sm:col-span-4 lg:col-span-3">
+                    <label
+                      htmlFor="sizes"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+                    >
+                      Sizes Available
+                    </label>
+                    <select
+                      onChange={(e) => setSize(e.target.value)}
+                      id="sizes"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    >
+                      {sizes.map((el, idx) => {
+                        return (
+                          <option value={size} key={idx}>
+                            {el.size}
+                          </option>
+                        )
                       })}
-                    </div>
-                  </fieldset>
+                    </select>
+                  </div>
                 </div>
 
                 <button
@@ -266,15 +268,16 @@ export default function Product() {
               <div>
                 <h3 className="sr-only">Description</h3>
                 <div className="space-y-6">
-                  {/* will have to change this description */}
                   <p className="text-base text-gray-900">
-                  {product.description}
+                    {product.description}
                   </p>
                 </div>
               </div>
 
               <div className="mt-10">
-                <h3 className="text-sm font-medium text-gray-900">Highlights</h3>
+                <h3 className="text-sm font-medium text-gray-900">
+                  Highlights
+                </h3>
                 <div className="mt-4">
                   <ul role="list" className="pl-4 list-disc text-sm space-y-2">
                     <li className="text-gray-400">
@@ -306,12 +309,11 @@ export default function Product() {
 
               <div className="mt-10">
                 <h2 className="text-sm font-medium text-gray-900">Details</h2>
-
                 <div className="mt-4 space-y-6">
                   <p className="text-sm text-gray-600">
-                    The 6-Pack includes two black, two white, and two heather gray
-                    Basic Tees. Sign up for our subscription service and be the
-                    first to get new, exciting colors, like our upcoming
+                    The 6-Pack includes two black, two white, and two heather
+                    gray Basic Tees. Sign up for our subscription service and be
+                    the first to get new, exciting colors, like our upcoming
                     &quot;Charcoal Gray&quot; limited release.
                   </p>
                 </div>

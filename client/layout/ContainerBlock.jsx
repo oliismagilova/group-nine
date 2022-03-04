@@ -1,21 +1,20 @@
-import React from "react";
-import Head from "next/head";
-import { useRouter } from "next/router";
+import React from 'react'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 import Navbar from '@/components/Navbar/Navbar'
 import Footer from '@/components/Footer/Footer'
 
-
 export default function ContainerBlock({ children, ...customMeta }) {
-  const router = useRouter();
+  const router = useRouter()
 
   const meta = {
-    title: "Group Nine T-Shirt Shop",
-    description: "Group Nine Project T-Shirt Shop",
-    image: "https://avatars.githubusercontent.com/u/74473426?v=4",
-    type: "website",
+    title: 'Group Nine T-Shirt Shop',
+    description: 'Group Nine Project T-Shirt Shop',
+    image: 'https://avatars.githubusercontent.com/u/74473426?v=4',
+    type: 'website',
     ...customMeta,
-  };
+  }
 
   function unToggleMenu() {
     let menu = document.getElementById('dropdown-menu')
@@ -71,5 +70,5 @@ export default function ContainerBlock({ children, ...customMeta }) {
         <Footer />
       </section>
     </>
-  );
+  )
 }
