@@ -15,9 +15,7 @@ export default function Home({email, secret}) {
         secret={secret}
       >
         <div className="flex flex-col items-center justify-center px-4 py-32">
-          {/* hero section */}
           <Header />
-          {/* quote section */}
           <section className="flex items-center justify-center py-20 bg-white min-w-screen">
             <div className="px-16 bg-white">
               <div className="container flex flex-col items-start mx-auto lg:items-center">

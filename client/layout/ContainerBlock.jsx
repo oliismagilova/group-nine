@@ -1,4 +1,3 @@
-import React from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
@@ -7,7 +6,7 @@ import Footer from '@/components/Footer/Footer'
 
 export default function ContainerBlock({ children, ...customMeta }) {
   const router = useRouter()
-
+  
   const meta = {
     title: 'Group Nine T-Shirt Shop',
     description: 'Group Nine Project T-Shirt Shop',

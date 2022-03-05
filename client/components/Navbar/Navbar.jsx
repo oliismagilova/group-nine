@@ -122,7 +122,7 @@ export default function Navbar() {
               </div>
             </div>   */}
             {user && (
-              <Link href="/store" type="button">
+              <Link href="/store/checkout" type="button">
                 <button className="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:ring-blue-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

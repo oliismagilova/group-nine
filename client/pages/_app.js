@@ -1,4 +1,5 @@
 import '@/style/main.css'
+
 import { UserAuthContextProvider } from '@/context/UserAuthContext'
 import { CartState } from '../context/Cart/CartState'
 

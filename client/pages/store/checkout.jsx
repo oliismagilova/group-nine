@@ -1,7 +1,10 @@
-// this is a modal and possibly wont be a page
+import { useCartContext } from '@/context/Cart/CartState'
+import ContainerBlock from '@/layout/ContainerBlock'
+
 export default function CartPage() {
+  const { cartItems } = useCartContext()
   return (
-    <div>
+    <ContainerBlock>
       <div className="mt-20">
         <h1 className="flex items-center justify-center font-bold text-blue-600 text-md lg:text-3xl">
           Checkout Page
@@ -13,18 +16,11 @@ export default function CartPage() {
             <h2 className="mb-4 font-bold md:text-xl text-heading ">
               Shipping Address
             </h2>
-            <form
-              className="justify-center w-full mx-auto"
-              method="post"
-              action
-            >
+            <form className="justify-center w-full mx-auto" method="post">
               <div className="">
                 <div className="space-x-0 lg:flex lg:space-x-4">
                   <div className="w-full lg:w-1/2">
-                    <label
-                      for="firstName"
-                      className="block mb-3 text-sm font-semibold text-gray-500"
-                    >
+                    <label className="block mb-3 text-sm font-semibold text-gray-500">
                       First Name
                     </label>
                     <input
@@ -35,10 +31,7 @@ export default function CartPage() {
                     />
                   </div>
                   <div className="w-full lg:w-1/2 ">
-                    <label
-                      for="firstName"
-                      className="block mb-3 text-sm font-semibold text-gray-500"
-                    >
+                    <label className="block mb-3 text-sm font-semibold text-gray-500">
                       Last Name
                     </label>
                     <input
@@ -51,10 +44,7 @@ export default function CartPage() {
                 </div>
                 <div className="mt-4">
                   <div className="w-full">
-                    <label
-                      for="Email"
-                      className="block mb-3 text-sm font-semibold text-gray-500"
-                    >
+                    <label className="block mb-3 text-sm font-semibold text-gray-500">
                       Email
                     </label>
                     <input
@@ -67,10 +57,7 @@ export default function CartPage() {
                 </div>
                 <div className="mt-4">
                   <div className="w-full">
-                    <label
-                      for="Address"
-                      className="block mb-3 text-sm font-semibold text-gray-500"
-                    >
+                    <label className="block mb-3 text-sm font-semibold text-gray-500">
                       Address
                     </label>
                     <textarea
@@ -84,10 +71,7 @@ export default function CartPage() {
                 </div>
                 <div className="space-x-0 lg:flex lg:space-x-4">
                   <div className="w-full lg:w-1/2">
-                    <label
-                      for="city"
-                      className="block mb-3 text-sm font-semibold text-gray-500"
-                    >
+                    <label className="block mb-3 text-sm font-semibold text-gray-500">
                       City
                     </label>
                     <input
@@ -98,10 +82,7 @@ export default function CartPage() {
                     />
                   </div>
                   <div className="w-full lg:w-1/2 ">
-                    <label
-                      for="postcode"
-                      className="block mb-3 text-sm font-semibold text-gray-500"
-                    >
+                    <label className="block mb-3 text-sm font-semibold text-gray-500">
                       Postcode
                     </label>
                     <input
@@ -124,10 +105,7 @@ export default function CartPage() {
                   </label>
                 </div>
                 <div className="relative pt-3 xl:pt-6">
-                  <label
-                    for="note"
-                    className="block mb-3 text-sm font-semibold text-gray-500"
-                  >
+                  <label className="block mb-3 text-sm font-semibold text-gray-500">
                     {' '}
                     Notes (Optional)
                   </label>
@@ -154,66 +132,41 @@ export default function CartPage() {
               <h2 className="text-xl font-bold">Order Summary</h2>
               <div className="mt-8">
                 <div className="flex flex-col space-y-4">
-                  <div className="flex space-x-4">
-                    <div>
-                      <img
-                        src="https://source.unsplash.com/user/erondu/1600x900"
-                        alt="image"
-                        className="w-60"
-                      />
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-bold">Title</h2>
-                      <p className="text-sm">Lorem ipsum dolor sit amet, tet</p>
-                      <span className="text-red-600">Price</span> $20
-                    </div>
-                    <div>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-6 h-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="flex space-x-4">
-                    <div>
-                      <img
-                        src="https://source.unsplash.com/collection/190727/1600x900"
-                        alt="image"
-                        className="w-60"
-                      />
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-bold">Title</h2>
-                      <p className="text-sm">Lorem ipsum dolor sit amet, tet</p>
-                      <span className="text-red-600">Price</span> $20
-                    </div>
-                    <div>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-6 h-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </div>
-                  </div>
+                  {cartItems.map((item, idx) => {
+                    return (
+                      <div key={idx} className="flex space-x-4">
+                        <div>
+                          <img
+                            src="https://source.unsplash.com/user/erondu/1600x900"
+                            alt="image"
+                            className="w-60"
+                          />
+                        </div>
+                        <div>
+                          <h2 className="text-xl font-bold">Title</h2>
+                          <p className="text-sm">
+                            Lorem ipsum dolor sit amet, tet
+                          </p>
+                          <span className="text-red-600">Price</span> $20
+                        </div>
+                        <div>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="w-6 h-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeWidth="2"
+                              d="M6 18L18 6M6 6l12 12"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                    )
+                  })}
                 </div>
               </div>
               <div className="flex p-4 mt-4">
@@ -232,6 +185,6 @@ export default function CartPage() {
           </div>
         </div>
       </div>
-    </div>
+    </ContainerBlock>
   )
 }
