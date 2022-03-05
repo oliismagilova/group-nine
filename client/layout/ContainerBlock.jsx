@@ -6,7 +6,7 @@ import Footer from '@/components/Footer/Footer'
 
 export default function ContainerBlock({ children, ...customMeta }) {
   const router = useRouter()
-  
+
   const meta = {
     title: 'Group Nine T-Shirt Shop',
     description: 'Group Nine Project T-Shirt Shop',

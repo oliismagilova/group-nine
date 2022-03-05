@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useUserAuth } from '../../context/UserAuthContext'
 import ContainerBlock from '../../layout/ContainerBlock'
@@ -6,12 +6,27 @@ import meta from '@/constants/meta'
 
 export default function RegisterPage() {
   const router = useRouter()
-
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  const [redirect, setRedirect] = useState(true)
 
-  const { signUp } = useUserAuth()
+  const { signUp, user } = useUserAuth()
+
+  useEffect(() => {
+    if (!user) {
+      setRedirect(false)
+    }
+
+    if (user) {
+      router.push('/')
+    }
+  })
+
+  // change to a loading spinner that's centered
+  if (redirect) {
+    return <div>redirecting</div>
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -25,7 +40,10 @@ export default function RegisterPage() {
   }
 
   return (
-    <ContainerBlock title={meta.register.title} description={meta.register.description}>
+    <ContainerBlock
+      title={meta.register.title}
+      description={meta.register.description}
+    >
       <section className="mb-80 mt-16">
         <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-md w-full space-y-8">

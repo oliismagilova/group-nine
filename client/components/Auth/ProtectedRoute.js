@@ -12,6 +12,7 @@ const ProtectedRoute = ({ children }) => {
     if (!user) {
       router.push('/auth/login')
     }
+
     setLoading(false)
 
   }, [user, loading])

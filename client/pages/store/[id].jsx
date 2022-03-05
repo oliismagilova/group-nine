@@ -5,9 +5,8 @@ import sizes from '@/constants/sizes'
 import Backslash from '@/components/Utilities/Backslash'
 import ContainerBlock from '@/layout/ContainerBlock'
 import ProductDataService from '@/services/product.services'
-
+// import UserDataService from '@/services/user.services'
 import { useCartContext } from '../../context/Cart/CartState'
-import { useUserAuth } from '../../context/UserAuthContext'
 import ProtectedRoute from '../../components/Auth/ProtectedRoute'
 
 export default function Product() {
@@ -19,30 +18,29 @@ export default function Product() {
   const [size, setSize] = useState('M')
   const [qty, setQty] = useState(1)
 
-  const [storage, setStorage] = useState([])
+  const { addToCart, cartItems } = useCartContext()
 
-  const { addToCart } = useCartContext()
-  const { user } = useUserAuth()
-
-  const addItem = (e) => {
+  const addItem = async (e) => {
     e.preventDefault()
     addToCart({
       product: product,
       size: size,
       qty: qty,
-      user,
     })
-    setStorage([...storage, { product, size, qty }])
+
+    // await UserDataService.addUserCart({ product, size, qty })
+
+    // working for now -- got to set field to match user
+    localStorage.setItem(
+      'User-Cart',
+      JSON.stringify([...cartItems, { product, size, qty }])
+    )
   }
 
   // grabbing firebase products
   useEffect(() => {
     getProducts()
   }, [loading])
-
-  useEffect(() => {
-    localStorage.setItem('Cart', JSON.stringify(storage))
-  }, [storage])
 
   const getProducts = async () => {
     const data = await ProductDataService.getAllProducts()
@@ -55,7 +53,6 @@ export default function Product() {
     if (found) {
       setProduct(found)
     }
-
     setLoading(false)
   }
 
