@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from 'react'
 
 import {
   signOut,
@@ -7,12 +7,12 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
-  sendPasswordResetEmail
+  sendPasswordResetEmail,
 } from 'firebase/auth'
 
-import { auth } from '../config/firebase-config';
+import { auth } from '../config/firebase-config'
 
-const UserAuthContext = createContext();
+const UserAuthContext = createContext()
 
 export function UserAuthContextProvider({ children }) {
   const [user, setUser] = useState('')
@@ -44,14 +44,18 @@ export function UserAuthContextProvider({ children }) {
   // will be called when this component is mounted
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+      setUser(currentUser)
     })
 
-    return () => { unsubscribe }
+    return () => {
+      unsubscribe
+    }
   }, [])
 
   return (
-    <UserAuthContext.Provider value={{ user, googleSignIn, signUp, logIn, logOut }}>
+    <UserAuthContext.Provider
+      value={{ user, googleSignIn, signUp, logIn, logOut }}
+    >
       {children}
     </UserAuthContext.Provider>
   )

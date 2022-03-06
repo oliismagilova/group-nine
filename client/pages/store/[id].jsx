@@ -5,9 +5,9 @@ import sizes from '@/constants/sizes'
 import Backslash from '@/components/Utilities/Backslash'
 import ContainerBlock from '@/layout/ContainerBlock'
 import ProductDataService from '@/services/product.services'
-// import UserDataService from '@/services/user.services'
 import { useCartContext } from '../../context/Cart/CartState'
 import ProtectedRoute from '../../components/Auth/ProtectedRoute'
+import { useUserAuth } from '../../context/UserAuthContext'
 
 export default function Product() {
   const router = useRouter()
@@ -19,7 +19,7 @@ export default function Product() {
   const [qty, setQty] = useState(1)
 
   const { addToCart, cartItems } = useCartContext()
-
+  const { user } = useUserAuth()
   const addItem = async (e) => {
     e.preventDefault()
     addToCart({
@@ -27,8 +27,6 @@ export default function Product() {
       size: size,
       qty: qty,
     })
-
-    // await UserDataService.addUserCart({ product, size, qty })
 
     // working for now -- got to set field to match user
     localStorage.setItem(

@@ -2,25 +2,29 @@ import React, { useReducer, useContext, useEffect, useState } from 'react'
 import CartContext from './CartContext'
 import CartReducer from './CartReducer'
 
-import { useUserAuth } from '../UserAuthContext'
 import { SHOW_HIDE_CART, ADD_TO_CART, REMOVE_ITEM } from './Types'
 
 export function CartState({ children }) {
   const initialState = {
     showCart: false,
     cartItems: [],
+    token: '',
   }
 
   const [state, dispatch] = useReducer(CartReducer, initialState)
 
-  // local storage is working have to set field to set user and check for user
   useEffect(() => {
     const data = localStorage.getItem('User-Cart')
-
+    const id = localStorage.getItem('Token')
+    
     if (data) {
       initialState.cartItems = JSON.parse(data)
     }
-  }, [])
+  })
+
+  useEffect(() => {
+    localStorage.setItem('User-Cart', JSON.stringify(initialState.cartItems))
+  })
 
   const addToCart = (item) => {
     dispatch({ type: ADD_TO_CART, payload: item })

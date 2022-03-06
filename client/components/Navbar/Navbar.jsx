@@ -1,7 +1,7 @@
 // will have to manage login state if we choose to have auth system -- meaning sign-in if no user isLoggedIn deteIsctegedIns = useState(false)ign-out if user isLoggedIn currIsentgedIn  = useState(false)active (buttons)
 import React from 'react'
 import Link from 'next/link'
-
+import { useRouter } from 'next/router'
 import routes from '../../routes'
 import toggleMenu from '@/constants/utils'
 
@@ -10,12 +10,15 @@ import { useCartContext } from '../../context/Cart/CartState'
 
 export default function Navbar() {
   const { user, logOut } = useUserAuth()
-
+  const router = useRouter()
   const { cartItems } = useCartContext()
 
   const handleLogout = async () => {
+    // clearing local storage to ensure if another user logs in the previous storage doesn't load in -- this is the only option for now
+    localStorage.clear()
     try {
       await logOut()
+      router.reload(window.location.pathname)
     } catch (err) {
       // change this eventually
       console.log(err)
