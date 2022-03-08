@@ -7,19 +7,17 @@ import ContainerBlock from '@/layout/ContainerBlock'
 import ProductDataService from '@/services/product.services'
 import { useCartContext } from '../../context/Cart/CartState'
 import ProtectedRoute from '../../components/Auth/ProtectedRoute'
-import { useUserAuth } from '../../context/UserAuthContext'
 
 export default function Product() {
-  const router = useRouter()
-  const [loading, setLoading] = useState(true)
-  const [products, setProducts] = useState([])
-  const [product, setProduct] = useState([])
-
-  const [size, setSize] = useState('M')
   const [qty, setQty] = useState(1)
-
+  const [size, setSize] = useState('M')
+  const [loading, setLoading] = useState(true)
+  const [product, setProduct] = useState([])
+  const [products, setProducts] = useState([])
+  
+  const router = useRouter()
   const { addToCart, cartItems } = useCartContext()
-  const { user } = useUserAuth()
+  
   const addItem = async (e) => {
     e.preventDefault()
     addToCart({

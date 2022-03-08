@@ -1,9 +1,19 @@
 import { useCartContext } from '@/context/Cart/CartState'
 import ContainerBlock from '@/layout/ContainerBlock'
+import { useEffect, useState } from 'react'
 import ProtectedRoute from '../../components/Auth/ProtectedRoute'
 
 export default function CartPage() {
   const { cartItems } = useCartContext()
+
+  const [total, setTotal] = useState(0)
+
+  useEffect(() => {
+    cartItems.map((el) => {
+      return setTotal(total + parseInt(el.product.price))
+    })
+  },[])
+
   return (
     <ProtectedRoute>
       <ContainerBlock>
@@ -145,11 +155,12 @@ export default function CartPage() {
                             />
                           </div>
                           <div>
-                            <h2 className="text-xl font-bold">Title</h2>
-                            <p className="text-sm">
-                              Lorem ipsum dolor sit amet, tet
-                            </p>
-                            <span className="text-red-600">Price</span> $20
+                            <h2 className="text-xl font-bold">
+                              {item.product.name}
+                            </h2>
+                            <p className="text-sm">{item.qty} Item(s)</p>
+                            <span className="text-red-600">Price </span>
+                            <span>${item.product.price}</span>
                           </div>
                           <div>
                             <svg
@@ -172,16 +183,16 @@ export default function CartPage() {
                   </div>
                 </div>
                 <div className="flex p-4 mt-4">
-                  <h2 className="text-xl font-bold">ITEMS 2</h2>
+                  <h2 className="text-xl font-bold">Cart Items: {cartItems.length}</h2>
                 </div>
                 <div className="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                  Subtotal<span className="ml-2">$40.00</span>
+                  Subtotal<span className="ml-2">${total}</span>
                 </div>
                 <div className="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
                   Shipping Tax<span className="ml-2">$10</span>
                 </div>
                 <div className="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                  Total<span className="ml-2">$50.00</span>
+                  Total<span className="ml-2">${total + 10}</span>
                 </div>
               </div>
             </div>
